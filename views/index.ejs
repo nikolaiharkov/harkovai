@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body class="bg-gray-900 text-gray-200 overflow-hidden">
+
+    <div class="relative min-h-screen md:flex">
+        <div class="absolute top-4 left-4 z-20 md:hidden">
+            <button id="menu-toggle" class="p-2 rounded-md bg-gray-800/50 hover:bg-gray-700 transition-all">
+                <i class="fa-solid fa-bars text-white"></i>
+            </button>
+        </div>
+        <aside id="sidebar" class="bg-gray-800 text-gray-300 w-72 h-screen flex flex-col fixed inset-y-0 left-0 z-10 transform -translate-x-full md:relative md:translate-x-0 transition-transform duration-300 ease-in-out border-r border-gray-700/50">
+            <div class="flex items-center justify-between p-4 border-b border-gray-700/50">
+                <h2 class="text-xl font-semibold">Riwayat Chat</h2>
+                <button id="new-chat-sidebar-button" class="p-2 rounded-md hover:bg-gray-700" title="Mulai Chat Baru">
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+            </div>
+            <nav id="chat-history-list" class="flex-grow p-2 overflow-y-auto space-y-1">
+            </nav>
+            <div class="p-4 border-t border-gray-700/50">
+                <button id="clear-all-data-button" class="w-full flex items-center justify-center gap-2 bg-red-800/60 hover:bg-red-700/60 text-sm text-red-200 rounded-lg px-3 py-2 transition-all">
+                    <i class="fa-solid fa-trash-can"></i>
+                    <span>Hapus Semua Data</span>
+                </button>
+            </div>
+        </aside>
+
+        <div id="chatbot-container" class="flex flex-col h-screen flex-grow">
+            <header class="flex items-center justify-between text-center py-4 px-6 border-b border-gray-700/50">
+                 <div class="w-10 md:hidden"></div> <div class="text-center">
+                    <h1 class="text-3xl font-bold bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">HarkovAI</h1>
+                    <p class="text-sm text-gray-400 mt-1">Model: <%= modelName %> (Markdown Enabled)</p>
+                    <p id="chat-id-display" class="text-xs text-gray-500 mt-1 truncate" title="ID Sesi Saat Ini"></p>
+                </div>
+                <div class="w-10 hidden md:block"></div>
+            </header>
+
+            <main id="chat-log" class="flex-grow p-4 sm:p-6 space-y-6 overflow-y-auto"></main>
+
+            <footer class="p-4 sm:p-6 border-t border-gray-700/50">
+                <form id="message-form" class="flex items-center gap-3">
+                    <input type="text" id="message-input" placeholder="Ketik pesan Anda di sini..." class="flex-grow bg-gray-800 border border-gray-700 rounded-full py-3 px-5 focus:outline-none focus:ring-2 focus:ring-cyan-500 transition-all duration-300" autocomplete="off">
+                    <button type="submit" id="send-button" class="bg-cyan-500 hover:bg-cyan-600 text-white rounded-full h-12 w-12 flex items-center justify-center transition-all duration-300 transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-cyan-400" aria-label="Kirim Pesan"><i class="fa-solid fa-paper-plane"></i></button>
+                </form>
+                <p class="text-xs text-center text-gray-500 mt-3">HarkovAI dapat membuat kesalahan. Pertimbangkan untuk memeriksa informasi penting.</p>
+            </footer>
+        </div>
+    </div>
+
+    <script src="/script.js"></script>
+</body>
+</html>
