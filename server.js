@@ -14,7 +14,7 @@ const __dirname = path.dirname(__filename);
 
 // Pengaturan View Engine ke EJS
 app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(currentDirname, 'views'));
 
 // Middleware Keamanan
 // Middleware Keamanan
@@ -31,7 +31,7 @@ app.use(
 );
 // ... (kode setelahnya)
 app.use(express.json()); // Mem-parsing body JSON dari request
-app.use(express.static(path.join(__dirname, 'public'))); // Menyajikan file statis (CSS, JS Klien)
+app.use(express.static(path.join(currentDirname, 'public')));
 
 // Rate Limiter untuk mencegah serangan brute-force/spam
 const apiLimiter = rateLimit({
