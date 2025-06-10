@@ -1,0 +1,12 @@
+# Pengaturan build dasar
+[build]
+  # Direktori tempat fungsi serverless Anda berada
+  functions = "netlify/functions"
+  # Direktori yang akan dipublikasikan (berisi file statis seperti CSS dan JS klien)
+  publish = "public"
+
+# Aturan rewrite untuk mengarahkan semua permintaan ke fungsi 'api' Anda
+[[redirects]]
+  from = "/*"
+  to = "/.netlify/functions/api/:splat"
+  status = 200
